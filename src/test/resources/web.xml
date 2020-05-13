@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app
+    version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!--
+        Infinispan CDI Integration requires following resource-env-ref definitions
+        see: https://developer.jboss.org/thread/276242
+    -->
+    <resource-env-ref>
+        <resource-env-ref-name>infinispan/container/clustered-counter</resource-env-ref-name>
+        <resource-env-ref-type>org.infinispan.manager.CacheContainer</resource-env-ref-type>
+        <lookup-name>java:jboss/infinispan/container/clustered-counter</lookup-name>
+    </resource-env-ref>
+
+    <resource-env-ref>
+        <resource-env-ref-name>infinispan/cache/clustered-counter/default</resource-env-ref-name>
+        <resource-env-ref-type>org.infinispan.Cache</resource-env-ref-type>
+        <lookup-name>java:jboss/infinispan/cache/clustered-counter/default</lookup-name>
+    </resource-env-ref>
+
+</web-app>
