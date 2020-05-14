@@ -28,7 +28,6 @@ import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,7 +45,6 @@ public class InfinispanAdvancedFeaturesIT {
     @TargetsContainer("server1")
     public static WebArchive createBasicDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-            .addAsLibraries(Maven.configureResolver().workOffline(false).loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile())
             .addPackages(true, "com.github.weand.wildfly.iafm.test")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
             .addAsWebInfResource(new File("src/test/resources/jboss-deployment-structure.xml"))
